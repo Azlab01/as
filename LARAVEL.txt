@@ -1,0 +1,34 @@
+Install Composer 
+	curl -sS https://getcomposer.org/installer | php
+Connexion
+	ssh ssh://gabonteldf@ssh.cluster028.hosting.ovh.net:22
+
+Liens symbolinques
+
+	A partir de la racine du site taper : ln -s ../storage/app/public public/storage
+
+
+Migration d'une seul table
+	php artisan migrate --path=/database/migrations/
+
+
+Deployer
+php composer.phar install --optimize-autoloader --no-dev && 
+php artisan optimize && 
+php artisan cache:clear && 
+php artisan route:clear && 
+php artisan view:clear && 
+php artisan config:cache && 
+php artisan route:cache && 
+php artisan view:cache
+
+vider 
+php artisan config:clear && php artisan view:clear && php artisan cache:clear && php artisan route:clear && php artisan clear-compiled
+
+Les permissions 
+ 1 - supprimier les permissions 
+ 2 - lancer les commande
+ 3 - Créer à nouveau
+
+php artisan permission:cache-reset && 
+php artisan cache:forget spatie.permission.cache
